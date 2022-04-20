@@ -19,4 +19,7 @@ stages:
           vmImage: 'windows-2019'
 
         steps:
-        - pwsh: /eng/scripts/patchreleases.ps1
+        - pwsh: |
+            $(Build.SourcesDirectory)/eng/scripts/patchreleases.ps1
+            Copy-Item eng/scripts/ReleasePatchInfo.csv $(Build.ArtifactStagingDirectory)/staging
+        displayName: 'Analyze and generate patches'
