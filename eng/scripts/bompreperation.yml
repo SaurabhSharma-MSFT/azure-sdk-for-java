@@ -8,6 +8,9 @@ pr:
     include:
       - eng/scripts/bompreperation.yml
 
+variables:
+  - template: /eng/pipelines/templates/variables/globals.yml
+
 stages:
   - stage: AnalyzeAndGeneratePatches
 
