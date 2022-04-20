@@ -9,16 +9,14 @@ pr:
       - eng/scripts/bompreperation.yml
 
 stages:
-  - stage: Analyze and generate patches
-    displayName: Analyze assemblies and generate patches
+  - stage: AnalyzeAndGeneratePatches
 
     jobs:
-      - job: Patch generation
-        displayName: Patch generation
+      - job: PatchGeneration
         timeoutInMinutes: 180
 
         pool:
-          vmImage: 'ubuntu-20.04'
+          vmImage: 'windows-2019'
 
         steps:
         - pwsh: /eng/scripts/patchreleases.ps1
