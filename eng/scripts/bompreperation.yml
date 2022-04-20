@@ -1,0 +1,24 @@
+trigger: none
+
+pr:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - eng/scripts/bompreperation.yml
+
+stages:
+  - stage: Analyze and generate patches
+    displayName: Analyze assemblies and generate patches
+
+    jobs:
+      - job: Patch generation
+        displayName: Patch generation
+        timeoutInMinutes: 180
+
+        pool:
+          vmImage: 'ubuntu-20.04'
+
+        steps:
+        - pwsh: /eng/scripts/patchreleases.ps1
